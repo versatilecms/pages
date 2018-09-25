@@ -19,5 +19,7 @@
                 "Versatile\\Pages\\Providers\\PagesServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
