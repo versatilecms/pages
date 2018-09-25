@@ -14,7 +14,7 @@ Familiarize yourself with `/config/page-blocks.php`. This is where you'll define
 - Each array inside this configuration file is a page block
 - Each block contains __fields__
 - Each field contains a unique __field__ key
-- Each field is based on a __Voyager Data Type__
+- Each field is based on a __Versatile Data Type__
 
 The below table explains what each property does and how it is relevant to the block itself:
 
@@ -76,7 +76,7 @@ In `/resources/views/vendor/versatile-pages/blocks`, we'll create a new file cal
 
 __Step 3. Add the block to a page__
 
-Next, jump into the Voyager Admin > Pages and click 'Content' next to a page. You'll now be able to select `Company Overview` from the 'Add Block' section. Add the block to the page, drag/drop it into place, edit the text etc.
+Next, jump into the Versatile Admin > Pages and click 'Content' next to a page. You'll now be able to select `Company Overview` from the 'Add Block' section. Add the block to the page, drag/drop it into place, edit the text etc.
 
 ---
 
@@ -84,7 +84,7 @@ Next, jump into the Voyager Admin > Pages and click 'Content' next to a page. Yo
 
 You may also wish to include custom logic and functionality into your page blocks. This can be done with a __Developer Controller__ Block - simply specify your controller namespace'd path and the method you wish to call, which should return a [view](https://laravel.com/docs/5.5/views) and you'll be on your way.
 
-For example, the [Voyager Frontend](https://github.com/versatilecms/front) package comes with a _Recent Posts_ method/view that you can play with and review.
+For example, the [Versatile Frontend](https://github.com/versatilecms/front) package comes with a _Recent Posts_ method/view that you can play with and review.
 
 From the _Add Block_ section of the page in the admin, add the block type of _Developer Controller_, then input the following into the path field:
 
