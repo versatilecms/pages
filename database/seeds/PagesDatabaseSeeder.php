@@ -16,10 +16,10 @@ class PagesDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->seed('PagesBread');
-        $this->seed('DataSeeder');
+        $this->seed('PagesTableSeeder');
+        $this->seed('DataTableSeeder');
 
-        $this->seed('PageBlocksBread');
+        $this->seed('PageBlocksTableSeeder');
         $this->seed('PageBlocksSeeder');
     }
 }

@@ -55,7 +55,7 @@ $blocks['company_overview'] = [
             'field' => "content",
             'display_name' => "Company Overview Content",
             'partial' => 'versatile::_components.fields.form.rich_text_box',
-            'required' => 1,
+            'required' => true,
             'placeholder' => '<p>Lorem ipsum dolor sit amet. Nullam in dui mauris.</p>',
         ],
     ],

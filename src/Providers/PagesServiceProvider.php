@@ -5,9 +5,13 @@ namespace Versatile\Pages\Providers;
 use Versatile\Pages\Commands;
 use Versatile\Pages\Blocks\Blocks;
 use Versatile\Pages\Facades\Blocks as BlocksFacade;
-
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
+
+use Versatile\Core\Policies\BasePolicy;
+
+use Versatile\Pages\Page;
+use Versatile\Pages\PageBlock;
 
 class PagesServiceProvider extends ServiceProvider
 {
@@ -15,6 +19,16 @@ class PagesServiceProvider extends ServiceProvider
      * Our root directory for this package to make traversal easier
      */
     protected $packagePath = __DIR__ . '/../../';
+
+    /**
+     * The policy mappings for the application.
+     *
+     * @var array
+     */
+    protected $policies = [
+        Page::class  => BasePolicy::class,
+        PageBlock::class => BasePolicy::class,
+    ];
 
     /**
      * Bootstrap the application services
@@ -28,6 +42,8 @@ class PagesServiceProvider extends ServiceProvider
         $this->strapCommands();
         $this->strapTranslations();
         $this->strapRoutes();
+
+        $this->registerPolicies();
     }
 
     /**

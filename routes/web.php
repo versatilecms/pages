@@ -19,12 +19,16 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'admin/pages/',
+    'prefix' => 'admin',
     'middleware' => ['web', 'admin.user'],
-    'namespace' => '\Versatile\Pages\Http\Controllers'
+    'namespace' => '\Versatile\Pages\Http\Controllers',
+    'as' => 'versatile.'
 ], function () {
-    Route::post('layout/{id?}', [
+    Route::post('pages/layout/{id?}', [
         'uses' => 'PagesController@changeLayout',
-        'as' => 'versatile.pages.layout'
+        'as' => 'pages.layout'
     ]);
+
+    Route::resource('pages', 'PagesController');
+    Route::resource('page-blocks', 'PageBlocksController');
 });

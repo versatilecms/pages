@@ -10,13 +10,33 @@ use Versatile\Pages\Page;
 use Versatile\Pages\PageBlock;
 use Versatile\Pages\Traits\Blocks;
 use Versatile\Pages\Validators\BlockValidators;
-use Versatile\Core\Facades\Versatile;
 use Versatile\Core\Http\Controllers\BaseController;
 use Versatile\Pages\Facades\Blocks as BlocksFacade;
 
 class PageBlocksController extends BaseController
 {
     use Blocks;
+
+    protected $dataTypeSlug = 'page-blocks';
+
+    /**
+     * Informs if DataType will be loaded from the database or setup
+     *
+     * @var bool
+     */
+    protected $dataTypeFromDatabase = false;
+
+    public function setup()
+    {
+        $this->bread->setName('page_blocks');
+        $this->bread->setSlug('page-blocks');
+
+        $this->bread->setDisplayNameSingular(__('versatile::seeders.data_types.page_block.singular'));
+        $this->bread->setDisplayNamePlural(__('versatile::seeders.data_types.page_block.plural'));
+
+        $this->bread->setIcon('versatile-puzzle');
+        $this->bread->setModel(PageBlock::class);
+    }
 
     public function index(Request $request)
     {
@@ -26,12 +46,10 @@ class PageBlocksController extends BaseController
     /**
      * POST B(R)EAD - Read data.
      *
-     * @param \Illuminate\Http\Request $request
      * @param int $id
-     *
      * @return View
      */
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
         $page = Page::findOrFail($id);
         $templates = BlocksFacade::all();
@@ -57,9 +75,7 @@ class PageBlocksController extends BaseController
 
         $template = $block->template();
 
-        $dataType = Versatile::model('DataType')
-            ->where('slug', '=', 'page-blocks')
-            ->first();
+        $dataType = $this->bread;
 
         // Get all block data & validate
         $data = [];
@@ -180,7 +196,7 @@ class PageBlocksController extends BaseController
 
         $page = Page::where('id', $request->page_id)->first();
 
-        $dataType = Versatile::model('DataType')->where('slug', '=', 'page-blocks')->first();
+        $dataType = $this->bread;
 
         if ($request->type === 'include') {
             $type = $request->type;
@@ -215,7 +231,7 @@ class PageBlocksController extends BaseController
     public function destroy(Request $request, $id)
     {
         $block = PageBlock::findOrFail($id);
-        $dataType = Versatile::model('DataType')->where('slug', '=', 'page-blocks')->first();
+        $dataType = $this->bread;
 
         try {
             $block->delete();

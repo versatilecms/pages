@@ -24,14 +24,14 @@ class ImageRowHandler extends AbstractHandler
             'field' => 'title',
             'display_name' => __('versatile-pages::generic.person'),
             'partial' => 'text',
-            'required' => 0,
+            'required' => false,
             'placeholder' => 'Our Partners',
         ];
         $form['fields']['sub_title'] = [
             'field' => 'sub_title',
             'display_name' => __('versatile-pages::generic.sub_text'),
             'partial' => 'text',
-            'required' => 0,
+            'required' => false,
             'placeholder' => 'The glue that keeps our company thriving.',
         ];
 
@@ -40,13 +40,13 @@ class ImageRowHandler extends AbstractHandler
                 'field' => "image_{$col}",
                 'display_name' => __('versatile-pages::generic.image_col', ['col' => $col]),
                 'partial' => 'image',
-                'required' => 0,
+                'required' => false,
             ];
             $form['fields']["link_{$col}"] = [
                 'field' => "link_{$col}",
                 'display_name' => __('versatile-pages::generic.link_for_image_col', ['col' => $col]),
                 'partial' => 'text',
-                'required' => 0,
+                'required' => false,
                 'placeholder' => '#',
             ];
             $form['fields']["br_{$col}"] = [

@@ -29,7 +29,7 @@ class ContentOneColumnHandler extends AbstractHandler
                 'field' => "html_content_{$col}",
                 'display_name' => __('versatile-pages::generic.column_content', ['col' => $col]),
                 'partial' => 'rich_text_box',
-                'required' => 0,
+                'required' => false,
                 'placeholder' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>',
             ];
         }

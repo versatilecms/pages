@@ -28,7 +28,7 @@ class CardsTwoColumnsHandler extends AbstractHandler
                 'field' => "image_{$col}",
                 'display_name' => __('versatile-pages::generic.column_image', ['col' => $col]),
                 'partial' => 'image',
-                'required' => 0,
+                'required' => false,
             ];
 
             if ($numCols === 1) {
@@ -36,7 +36,7 @@ class CardsTwoColumnsHandler extends AbstractHandler
                     'field' => "image_position_{$col}",
                     'display_name' => __('versatile-pages::generic.position_of_column_image', ['col' => $col]),
                     'partial' => 'select_dropdown',
-                    'required' => 0,
+                    'required' => false,
                     'options' => [
                         'Left',
                         'Right',
@@ -55,7 +55,7 @@ class CardsTwoColumnsHandler extends AbstractHandler
                 'field' => "title_{$col}",
                 'display_name' => __('versatile-pages::generic.column_title', ['col' => $col]),
                 'partial' => 'text',
-                'required' => 0,
+                'required' => false,
                 'placeholder' => 'Changing the World!',
             ];
             
@@ -63,7 +63,7 @@ class CardsTwoColumnsHandler extends AbstractHandler
                 'field' => "content_{$col}",
                 'display_name' => __('versatile-pages::generic.column_content', ['col' => $col]),
                 'partial' => 'text',
-                'required' => 0,
+                'required' => false,
                 'placeholder' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.',
             ];
             
@@ -77,7 +77,7 @@ class CardsTwoColumnsHandler extends AbstractHandler
                 'field' => "button_text_{$col}",
                 'display_name' => __('versatile-pages::generic.button_column_text', ['col' => $col]),
                 'partial' => 'text',
-                'required' => 0,
+                'required' => false,
                 'placeholder' => 'Learn More',
             ];
             
@@ -85,7 +85,7 @@ class CardsTwoColumnsHandler extends AbstractHandler
                 'field' => "link_{$col}",
                 'display_name' => __('versatile-pages::generic.column_link', ['col' => $col]),
                 'partial' => 'text',
-                'required' => 0,
+                'required' => false,
                 'placeholder' => '#',
             ];
             

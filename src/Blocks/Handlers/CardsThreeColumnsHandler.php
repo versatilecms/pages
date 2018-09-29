@@ -28,7 +28,7 @@ class CardsThreeColumnsHandler extends AbstractHandler
                 'field' => "image_{$col}",
                 'display_name' => __('versatile-pages::generic.column_image', ['col' => $col]),
                 'partial' => 'image',
-                'required' => 0,
+                'required' => false,
             ];
 
             if ($numCols === 1) {
@@ -36,7 +36,7 @@ class CardsThreeColumnsHandler extends AbstractHandler
                     'field' => "image_position_{$col}",
                     'display_name' => __('versatile-pages::generic.position_of_column_image', ['col' => $col]),
                     'partial' => 'select_dropdown',
-                    'required' => 0,
+                    'required' => false,
                     'options' => [
                         'Left',
                         'Right',
@@ -54,14 +54,14 @@ class CardsThreeColumnsHandler extends AbstractHandler
                 'field' => "title_{$col}",
                 'display_name' => __('versatile-pages::generic.column_title', ['col' => $col]),
                 'partial' => 'text',
-                'required' => 0,
+                'required' => false,
                 'placeholder' => 'Changing the World!',
             ];
             $form['fields']["content_{$col}"] = [
                 'field' => "content_{$col}",
                 'display_name' => __('versatile-pages::generic.column_content', ['col' => $col]),
                 'partial' => 'text',
-                'required' => 0,
+                'required' => false,
                 'placeholder' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.',
             ];
             $form['fields']["br_{$col}_2"] = [
@@ -73,14 +73,14 @@ class CardsThreeColumnsHandler extends AbstractHandler
                 'field' => "button_text_{$col}",
                 'display_name' => __('versatile-pages::generic.button_column_text', ['col' => $col]),
                 'partial' => 'text',
-                'required' => 0,
+                'required' => false,
                 'placeholder' => 'Learn More',
             ];
             $form['fields']["link_{$col}"] = [
                 'field' => "link_{$col}",
                 'display_name' => __('versatile-pages::generic.column_link', ['col' => $col]),
                 'partial' => 'text',
-                'required' => 0,
+                'required' => false,
                 'placeholder' => '#',
             ];
             $form['fields']["br_{$col}_3"] = [

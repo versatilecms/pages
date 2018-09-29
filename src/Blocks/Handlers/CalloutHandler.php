@@ -24,7 +24,7 @@ class CalloutHandler extends AbstractHandler
                     'field' => 'size',
                     'display_name' => __('versatile-pages::generic.size_of_section'),
                     'partial' => 'select_dropdown',
-                    'required' => 1,
+                    'required' => true,
                     'options' => [
                         'Small',
                         'Medium',
@@ -37,7 +37,7 @@ class CalloutHandler extends AbstractHandler
                     'field' => 'fade_background',
                     'display_name' => __('versatile-pages::generic.fade_out_background'),
                     'partial' => 'checkbox',
-                    'required' => 0,
+                    'required' => false,
                 ],
                 'br_1' => [
                     'field' => 'br_1',
@@ -48,7 +48,7 @@ class CalloutHandler extends AbstractHandler
                     'field' => 'background_image',
                     'display_name' => __('versatile-pages::generic.background_image'),
                     'partial' => 'image',
-                    'required' => 1,
+                    'required' => true,
                 ],
                 'br_2' => [
                     'field' => 'br_2',
@@ -59,14 +59,14 @@ class CalloutHandler extends AbstractHandler
                     'field' => 'title',
                     'display_name' => __('versatile-pages::generic.title'),
                     'partial' => 'text',
-                    'required' => 0,
+                    'required' => false,
                     'placeholder' => 'Changing the World!',
                 ],
                 'content' => [
                     'field' => 'content',
                     'display_name' => __('versatile-pages::generic.content'),
                     'partial' => 'text',
-                    'required' => 0,
+                    'required' => false,
                     'placeholder' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.',
                 ],
                 'br_3' => [
@@ -78,14 +78,14 @@ class CalloutHandler extends AbstractHandler
                     'field' => 'button_text',
                     'display_name' => __('versatile-pages::generic.button_text'),
                     'partial' => 'text',
-                    'required' => 0,
+                    'required' => false,
                     'placeholder' => 'Learn More',
                 ],
                 'link' => [
                     'field' => 'link',
                     'display_name' => __('versatile-pages::generic.link'),
                     'partial' => 'text',
-                    'required' => 0,
+                    'required' => false,
                     'placeholder' => '#',
                 ],
                 'br_4' => [

@@ -95,14 +95,14 @@
                             @foreach($dataTypeRows as $row)
                             <!-- GET THE DISPLAY OPTIONS -->
                                 @php
-                                    $options = json_decode($row->details);
+                                    $options = $row->details;
                                     $display_options = isset($options->display) ? $options->display : NULL;
                                 @endphp
                                 @if ($options && isset($options->formfields_custom))
                                     @include('versatile::_components.fields.form.custom.' . $options->formfields_custom)
                                 @else
                                     <div class="form-group @if($row->type == 'hidden') hidden @endif @if(isset($display_options->width)){{ 'col-md-' . $display_options->width }}@else{{ '' }}@endif" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
-                                        {{ $row->slugify }}
+                                        {{ isset($row->slugify) ? $row->slugify : '' }}
                                         <label for="name">{{ $row->display_name }}</label>
                                         @include('versatile::multilingual.input-hidden-bread-edit-add')
                                         @if($row->type == 'relationship')
@@ -172,13 +172,14 @@
         $('document').ready(function () {
             $('.toggleswitch').bootstrapToggle();
 
-            //Init datepicker for date fields if data-datepicker attribute defined
-            //or if browser does not handle date inputs
+            // Init datepicker for date fields if data-datetimepicker attribute defined
+            // or if browser does not handle date inputs
             $('.form-group input[type=date]').each(function (idx, elt) {
-                if (elt.type != 'date' || elt.hasAttribute('data-datepicker')) {
+                if (elt.hasAttribute('data-datetimepicker')) {
                     elt.type = 'text';
-                    $(elt).datetimepicker($(elt).data('datepicker'));
-                }
+                    var options = $(elt).data('datetimepicker');
+                    $(elt).datetimepicker(options);
+               }
             });
 
             @if ($isModelTranslatable)

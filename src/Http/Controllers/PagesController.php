@@ -5,43 +5,213 @@ namespace Versatile\Pages\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Versatile\Pages\Page;
-// use Versatile\Pages\Traits\Blocks;
-// use Versatile\Front\Traits\Breadcrumbs;
 use Versatile\Core\Http\Controllers\BaseController;
 use Versatile\Pages\Actions\BlocksAction;
 
 class PagesController extends BaseController
 {
-    // use Blocks;
-    // use Breadcrumbs;
-
     /**
-     * @var string
-     */
-    protected $actionsFormat = 'dropdown';
-
-    /**
-     * Get the actions available for the resource.
+     * Informs if DataType will be loaded from the database or setup
      *
-     * @return array
+     * @var bool
      */
-    public function actions()
+    protected $dataTypeFromDatabase = false;
+
+    public function setup()
     {
-        return [
+        $this->bread->setName('pages');
+        $this->bread->setSlug('pages');
+
+        $this->bread->setDisplayNameSingular(__('versatile::seeders.data_types.page.singular'));
+        $this->bread->setDisplayNamePlural(__('versatile::seeders.data_types.page.plural'));
+
+        $this->bread->setIcon('versatile-file-text');
+        $this->bread->setModel(Page::class);
+
+        $this->bread->setActionsFormat('dropdown');
+
+        $this->bread->addAction(
             BlocksAction::class
-        ];
+        );
+
+        $this->bread->addDataRows([
+            [
+                'field' => 'id',
+                'type' => 'number',
+                'display_name' => __('versatile::seeders.data_rows.id'),
+                'required' => true,
+                'browse' => false,
+                'read' => false,
+                'edit' => false,
+                'add' => false,
+                'delete' => false,
+                'details' => [],
+            ],
+
+            [
+                'field' => 'author_id',
+                'type' => 'text',
+                'display_name' => __('versatile::seeders.data_rows.author'),
+                'required' => true,
+                'browse' => false,
+                'read' => false,
+                'edit' => false,
+                'add' => false,
+                'delete' => false,
+                'details' => [],
+            ],
+
+            [
+                'field' => 'title',
+                'type' => 'text',
+                'display_name' => __('versatile::seeders.data_rows.title'),
+                'required' => true,
+                'browse' => true,
+                'read' => true,
+                'edit' => true,
+                'add' => true,
+                'delete' => true,
+                'details' => [],
+            ],
+
+            [
+                'field' => 'excerpt',
+                'type' => 'text_area',
+                'display_name' => __('versatile::seeders.data_rows.excerpt'),
+                'required' => true,
+                'browse' => false,
+                'read' => true,
+                'edit' => true,
+                'add' => true,
+                'delete' => true,
+                'details' => [],
+            ],
+
+            [
+                'field' => 'body',
+                'type' => 'rich_text_box',
+                'display_name' => __('versatile::seeders.data_rows.body'),
+                'required' => true,
+                'browse' => false,
+                'read' => true,
+                'edit' => true,
+                'add' => true,
+                'delete' => true,
+                'details' => [],
+            ],
+
+            [
+                'field' => 'slug',
+                'type' => 'text',
+                'display_name' => __('versatile::seeders.data_rows.slug'),
+                'required' => true,
+                'browse' => false,
+                'read' => true,
+                'edit' => true,
+                'add' => true,
+                'delete' => true,
+                'details' => [
+                    'slugify' => [
+                        'origin' => 'title',
+                    ],
+                ],
+            ],
+
+            [
+                'field' => 'meta_description',
+                'type' => 'text',
+                'display_name' => __('versatile::seeders.data_rows.meta_description'),
+                'required' => true,
+                'browse' => false,
+                'read' => true,
+                'edit' => true,
+                'add' => true,
+                'delete' => true,
+                'details' => [],
+            ],
+
+            [
+                'field' => 'meta_keywords',
+                'type' => 'text',
+                'display_name' => __('versatile::seeders.data_rows.meta_keywords'),
+                'required' => true,
+                'browse' => false,
+                'read' => true,
+                'edit' => true,
+                'add' => true,
+                'delete' => true,
+                'details' => [],
+            ],
+
+            [
+                'field' => 'status',
+                'type' => 'select_dropdown',
+                'display_name' => __('versatile::seeders.data_rows.status'),
+                'required' => true,
+                'browse' => true,
+                'read' => true,
+                'edit' => true,
+                'add' => true,
+                'delete' => true,
+                'details' => [
+                    'default' => 'INACTIVE',
+                    'options' => [
+                        'INACTIVE' => 'INACTIVE',
+                        'ACTIVE' => 'ACTIVE',
+                    ],
+                ],
+            ],
+
+            [
+                'field' => 'created_at',
+                'type' => 'timestamp',
+                'display_name' => __('versatile::seeders.data_rows.created_at'),
+                'required' => true,
+                'browse' => true,
+                'read' => true,
+                'edit' => false,
+                'add' => false,
+                'delete' => false,
+                'details' => [],
+            ],
+
+            [
+                'field' => 'updated_at',
+                'type' => 'timestamp',
+                'display_name' => __('versatile::seeders.data_rows.updated_at'),
+                'required' => true,
+                'browse' => false,
+                'read' => false,
+                'edit' => false,
+                'add' => false,
+                'delete' => false,
+                'details' => [],
+            ],
+
+            [
+                'field' => 'image',
+                'type' => 'image',
+                'display_name' => __('versatile::seeders.data_rows.page_image'),
+                'required' => false,
+                'browse' => true,
+                'read' => true,
+                'edit' => true,
+                'add' => true,
+                'delete' => true,
+                'details' => [],
+            ]
+        ]);
     }
 
     /**
      * POST B(R)EAD - Create data.
      *
-     * @param Request $request
      * @return mixed
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function create(Request $request)
+    public function create()
     {
-        $view = parent::create($request);
+        $view = parent::create();
         $view['layouts'] = page_layouts();
 
         return $view;
@@ -50,14 +220,13 @@ class PagesController extends BaseController
     /**
      * POST B(R)EAD - Read data.
      *
-     * @param Request $request
      * @param $id
      * @return mixed
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
-        $view = parent::edit($request, $id);
+        $view = parent::edit($id);
         $view['layouts'] = page_layouts();
 
         return $view;

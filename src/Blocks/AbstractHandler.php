@@ -70,7 +70,7 @@ abstract class AbstractHandler //implements HandlerInterface
             'field' => 'spaces',
             'display_name' => __('versatile-pages::generic.add_vertical_space'),
             'partial' => 'versatile::_components.fields.form.select_dropdown',
-            'required' => 0,
+            'required' => false,
             'options' => [
                 'Bottom',
                 'Top',
@@ -88,7 +88,7 @@ abstract class AbstractHandler //implements HandlerInterface
             'display_name' => __('versatile-pages::generic.animate_this_block'),
             'partial' => 'versatile::_components.fields.form.checkbox',
             'placeholder' => 'on',
-            'required' => 0,
+            'required' => false,
         ];
     }
 }

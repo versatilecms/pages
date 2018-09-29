@@ -3,7 +3,7 @@
 use Versatile\Pages\Page;
 use Illuminate\Database\Seeder;
 
-class DataSeeder extends Seeder
+class DataTableSeeder extends Seeder
 {
     /**
      * Auto generated seed file.
